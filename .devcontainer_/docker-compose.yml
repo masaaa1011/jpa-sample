@@ -1,0 +1,11 @@
+version: '3.5'
+services:
+  tomcat:
+    container_name: maven
+    build: ./
+    volumes:
+      - "../project:/opt/project"
+    environment:
+      - TZ=Asia/Tokyo
+    network_mode: host
+    tty: true
