@@ -1,15 +1,8 @@
 package com.example;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
-
-// import javax.persistence.EntityManager;
-// import javax.persistence.Persistence;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
-// import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.annotation.Bean;
@@ -18,10 +11,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.example.jpa.Customer;
 import com.example.jpa.CustomerRepository;
+import com.example.jpa.CustomerService;
 
 @SpringBootApplication
-// @EnableAutoConfiguration
-// @ComponentScan(basePackages = "com.example.jpa.*")
 @EnableJpaRepositories
 @EnableJpaAuditing
 public class App {
@@ -33,10 +25,12 @@ public class App {
   }
 
   @Bean
-  public CommandLineRunner demo(CustomerRepository repository) {
+  public CommandLineRunner demo(CustomerRepository repository, CustomerService service, MyBean bean) {
     return (args) -> {
 
+      System.out.println(bean);
       System.out.println(repository);
+      System.out.println(service.count());
       // save a few customers
       repository.save(new Customer("Jack", "Bauer"));
       repository.save(new Customer("Chloe", "O'Brian"));
@@ -65,9 +59,7 @@ public class App {
       repository.findByLastName("Bauer").forEach(bauer -> {
         log.info(bauer.toString());
       });
-      // for (Customer bauer : repository.findByLastName("Bauer")) {
-      //  log.info(bauer.toString());
-      // }
+
       log.info("");
     };
   }

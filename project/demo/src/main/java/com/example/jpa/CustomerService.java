@@ -1,12 +1,14 @@
 package com.example.jpa;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-// @Service
+@Service
 public class CustomerService {
-    // @Autowired
+    @Autowired
     private CustomerRepository customerRepository;
     
-    public void Method(){
-        customerRepository.count();
+    public long count(){
+        return customerRepository.count();
     }
 }
