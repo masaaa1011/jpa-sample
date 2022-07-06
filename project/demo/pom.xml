@@ -22,6 +22,12 @@
 
     <!-- Mybatis -->
     <dependency>
+      <groupId>org.mybatis.dynamic-sql</groupId>
+      <artifactId>mybatis-dynamic-sql</artifactId>
+      <version>1.4.0</version>
+    </dependency>
+
+    <dependency>
       <groupId>org.mybatis</groupId>
       <artifactId>mybatis</artifactId>
       <version>3.5.10</version>
