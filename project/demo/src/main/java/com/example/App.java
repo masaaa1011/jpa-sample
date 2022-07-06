@@ -27,8 +27,8 @@ public class App {
   @Bean
   public CommandLineRunner demo(CustomerRepository repository, CustomerService service, MyBean bean) {
     return (args) -> {
-
-      System.out.println(bean);
+      
+      System.out.println(bean.BeanMethod());
       System.out.println(repository);
       System.out.println(service.count());
       // save a few customers
